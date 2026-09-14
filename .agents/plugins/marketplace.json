@@ -1,0 +1,20 @@
+{
+  "name": "163-job-apply",
+  "interface": {
+    "displayName": "163 Job Apply"
+  },
+  "plugins": [
+    {
+      "name": "163-job-apply",
+      "source": {
+        "source": "local",
+        "path": "./plugins/163-job-apply"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Productivity"
+    }
+  ]
+}

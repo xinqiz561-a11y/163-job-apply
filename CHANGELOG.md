@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.1.1
+
+- 增加仓库内 Codex marketplace 清单，可从 GitHub 注册并安装插件；
+- 统一为 `plugins/163-job-apply` marketplace 目录结构，并补充安装、更新和源码运行说明。
+
 ## 0.1.0
 
 - 初始 163.com 求职投递 skill/plugin；

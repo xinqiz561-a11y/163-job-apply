@@ -16,4 +16,4 @@ jobs:
         with:
           python-version: ${{ matrix.python-version }}
       - name: Run offline regression test
-        run: python skills/163-job-apply/scripts/test_skill.py
+        run: python plugins/163-job-apply/skills/163-job-apply/scripts/test_skill.py

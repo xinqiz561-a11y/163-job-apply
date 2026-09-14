@@ -1,6 +1,6 @@
 {
   "name": "163-job-apply",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "A safety-gated Codex skill for verified 163.com résumé applications.",
   "author": {
     "name": "163 Job Apply contributors"

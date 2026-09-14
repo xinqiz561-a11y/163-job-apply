@@ -37,19 +37,57 @@ GPT 可在后台生成并检查求职邮件，完成附件校验和重复投递�
 python -m pip install pywin32
 ```
 
+## 通过 Codex marketplace 安装
+
+仓库内置 `.agents/plugins/marketplace.json`，可直接作为 Git marketplace 添加。下面的命令
+会从 GitHub 的 `main` 分支注册 marketplace，并安装 `163-job-apply` 插件：
+
+```powershell
+codex plugin marketplace add xinqiz561-a11y/163-job-apply --ref main
+codex plugin list --marketplace 163-job-apply --available
+codex plugin add 163-job-apply@163-job-apply
+```
+
+安装完成后重新打开一个 Codex 对话，让新 skill 生效。插件安装只提供本地脚本和安全规则，
+不会读取或保存你的邮箱密码、客户端授权码或简历；首次发送前仍需按下文配置本机凭据。
+
+更新仓库来源时运行：
+
+```powershell
+codex plugin marketplace upgrade 163-job-apply
+```
+
+如果 Codex 提示本地插件仍是旧版本，可先卸载再重新安装：
+
+```powershell
+codex plugin remove 163-job-apply@163-job-apply
+codex plugin add 163-job-apply@163-job-apply
+```
+
+## 从源码运行
+
+不安装 marketplace 也可以直接克隆仓库并运行离线测试。仓库采用 marketplace 标准目录，
+插件根目录为 `plugins/163-job-apply`：
+
+```powershell
+git clone https://github.com/xinqiz561-a11y/163-job-apply.git
+cd 163-job-apply
+python plugins/163-job-apply/skills/163-job-apply/scripts/test_skill.py
+```
+
 ## 快速使用
 
 1. 复制 `examples/candidates.example.json`，在 `profile` 中填写自己的专业、学历和毕业届次，并替换为自己的岗位清单与简历路径。专业不限，由用户自行选择或填写。
 2. 在本机校验清单：
 
 ```powershell
-python skills/163-job-apply/scripts/validate_candidates.py .\candidates.json --require-send-ready
+python plugins/163-job-apply/skills/163-job-apply/scripts/validate_candidates.py .\candidates.json --require-send-ready
 ```
 
 3. 生成预览：
 
 ```powershell
-python skills/163-job-apply/scripts/build_application_emails.py .\candidates.json --resume .\resume.pdf --output .\preview.json
+python plugins/163-job-apply/skills/163-job-apply/scripts/build_application_emails.py .\candidates.json --resume .\resume.pdf --output .\preview.json
 ```
 
 4. 人工检查 `preview.json`，确认精确的候选项后，把根对象的
@@ -57,20 +95,20 @@ python skills/163-job-apply/scripts/build_application_emails.py .\candidates.jso
 5. 先做 dry-run：
 
 ```powershell
-python skills/163-job-apply/scripts/send_confirmed_batch.py .\preview.json --dry-run --log-path .\private\send-log.jsonl
+python plugins/163-job-apply/skills/163-job-apply/scripts/send_confirmed_batch.py .\preview.json --dry-run --log-path .\private\send-log.jsonl
 ```
 
 6. Windows 上验证并保存授权码：
 
 ```powershell
-python skills/163-job-apply/scripts/store_163_auth_code.py --email yourname@163.com
-python skills/163-job-apply/scripts/send_with_stored_credential.py --email yourname@163.com --mode test-connection
+python plugins/163-job-apply/skills/163-job-apply/scripts/store_163_auth_code.py --email yourname@163.com
+python plugins/163-job-apply/skills/163-job-apply/scripts/send_with_stored_credential.py --email yourname@163.com --mode test-connection
 ```
 
 7. 发送已确认批次：
 
 ```powershell
-python skills/163-job-apply/scripts/send_with_stored_credential.py `
+python plugins/163-job-apply/skills/163-job-apply/scripts/send_with_stored_credential.py `
   --email yourname@163.com `
   --mode send `
   --manifest .\preview.json `
@@ -87,7 +125,7 @@ python skills/163-job-apply/scripts/send_with_stored_credential.py `
 测试不连接真实邮箱：
 
 ```powershell
-python skills/163-job-apply/scripts/test_skill.py
+python plugins/163-job-apply/skills/163-job-apply/scripts/test_skill.py
 ```
 
 CI 只运行离线校验和发送保护测试，不保存或使用任何真实邮箱凭据。
@@ -100,5 +138,5 @@ CI 只运行离线校验和发送保护测试，不保存或使用任何真实�
 - 不在日志中保存正文、简历内容、密码或授权码；
 - 批量发送仍需要人工确认，默认最多 10 个候选项。
 
-详细规则见 `skills/163-job-apply/SKILL.md`、`SECURITY.md` 和
-`skills/163-job-apply/references/`。
+详细规则见 `plugins/163-job-apply/skills/163-job-apply/SKILL.md`、`SECURITY.md` 和
+`plugins/163-job-apply/skills/163-job-apply/references/`。
