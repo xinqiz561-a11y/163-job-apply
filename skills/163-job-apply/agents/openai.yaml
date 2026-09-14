@@ -1,4 +1,4 @@
 interface:
   display_name: "163求职投递"
-  short_description: "核验岗位并通过163 SMTP安全投递简历"
+  short_description: "后台准备并经一键确认通过163 SMTP代发简历"
   default_prompt: "使用 $163-job-apply 帮我核验岗位、生成邮件预览，并在我确认后通过163邮箱投递。"

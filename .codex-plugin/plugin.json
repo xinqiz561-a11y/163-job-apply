@@ -10,8 +10,8 @@
   "skills": "./skills/",
   "interface": {
     "displayName": "163求职投递",
-    "shortDescription": "核验岗位并通过163 SMTP安全投递简历",
-    "longDescription": "核验企业招聘来源、生成个性化求职邮件，并在明确确认后通过163 SMTP发送带简历附件的邮件。",
+    "shortDescription": "后台准备并经一键确认通过163 SMTP代发简历",
+    "longDescription": "在投递邮箱已核验且用户已安全配置163客户端授权码的前提下，由GPT后台完成岗位匹配、邮件生成、附件检查和去重，并在用户一键确认后通过163 SMTP代发简历；结合GPT的岗位与招聘邮箱检索能力，可形成完整投递闭环。",
     "developerName": "163 Job Apply contributors",
     "category": "Productivity",
     "capabilities": ["Read", "Write"],
