@@ -8,6 +8,9 @@ credentials/
 *_send_log*.jsonl
 *_preview*.json
 *_candidates*.json
+candidates.json
+preview.json
+*.jsonl
 *.pdf
 
 # Python
