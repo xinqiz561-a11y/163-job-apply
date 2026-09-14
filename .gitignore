@@ -1,0 +1,24 @@
+# Personal data and credentials
+.env
+*.pem
+*.key
+private/
+secrets/
+credentials/
+*_send_log*.jsonl
+*_preview*.json
+*_candidates*.json
+*.pdf
+
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.venv/
+venv/
+
+# Editors and OS
+.idea/
+.vscode/
+Thumbs.db
+Desktop.ini

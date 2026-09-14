@@ -1,0 +1,23 @@
+{
+  "name": "163-job-apply",
+  "version": "0.1.0",
+  "description": "A safety-gated Codex skill for verified 163.com résumé applications.",
+  "author": {
+    "name": "163 Job Apply contributors"
+  },
+  "license": "MIT",
+  "keywords": ["163", "job-application", "resume", "SMTP", "Codex skill"],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "163求职投递",
+    "shortDescription": "核验岗位并通过163 SMTP安全投递简历",
+    "longDescription": "核验企业招聘来源、生成个性化求职邮件，并在明确确认后通过163 SMTP发送带简历附件的邮件。",
+    "developerName": "163 Job Apply contributors",
+    "category": "Productivity",
+    "capabilities": ["Read", "Write"],
+    "defaultPrompt": [
+      "帮我核验岗位并用163邮箱生成求职投递预览。",
+      "检查这批163求职邮件，发送前列出收件人和附件。"
+    ]
+  }
+}

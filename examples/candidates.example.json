@@ -1,0 +1,23 @@
+{
+  "profile": {
+    "name": "示例候选人",
+    "major": "土木工程",
+    "degree": "硕士",
+    "graduation": "2027届",
+    "phone": "13800000000",
+    "email": "candidate@example.com"
+  },
+  "candidates": [
+    {
+      "id": "demo-company-project-001",
+      "company": "示例工程公司",
+      "position": "项目管理岗",
+      "to": "hr@example.com",
+      "email_verified": true,
+      "source_url": "https://example.com/careers",
+      "email_source": "企业官方招聘页",
+      "match_reason": "岗位涉及项目协调和现场管理，土木工程背景可迁移。",
+      "resume_path": "C:\\private\\resume.pdf"
+    }
+  ]
+}
